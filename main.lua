@@ -1,13 +1,3 @@
---[[
-    Fluent Interface Suite
-    This script is not intended to be modified.
-    To view the source code, see the 'src' folder on GitHub!
-
-    Author: dawid
-    License: MIT
-    GitHub: https://github.com/dawid-scripts/Fluent
---]]
-
 local a, b = {
 	{
 		1,
@@ -107,6 +97,15 @@ local a, b = {
 		},
 	},
 }
+
+local Animation
+pcall(function()
+    local _fn = loadstring(game:HttpGet("https://raw.githubusercontent.com/StyearX/Fluent-modded/refs/heads/main/Addons/animatedgui.lua"))
+    if _fn then Animation = _fn() end
+end)
+if not Animation then Animation = {Apply = function() end} end
+getgenv().ShineEnabled = true
+
 local aa = {
 	function()
 		local c, d, e, f, g = b(1)
@@ -576,20 +575,16 @@ local aa = {
 					SortOrder = Enum.SortOrder.LayoutOrder,
 				}),
 			})
-			s.ButtonHolderFrame = p(
-				"Frame",
-				{
-					Size = UDim2.new(1, 0, 0, 70),
-					Position = UDim2.new(0, 0, 1, -70),
-					ThemeTag = {
-						BackgroundColor3 = "DialogHolder",
-					},
+			s.ButtonHolderFrame = p("Frame", {
+				Size = UDim2.new(1, 0, 0, 70),
+				Position = UDim2.new(0, 0, 1, -70),
+				ThemeTag = {
+					BackgroundColor3 = "DialogHolder",
 				},
-				{
-					p("Frame", { Size = UDim2.new(1, 0, 0, 1), ThemeTag = { BackgroundColor3 = "DialogHolderLine" } }),
-					s.ButtonHolder,
-				}
-			)
+			}, {
+				p("Frame", { Size = UDim2.new(1, 0, 0, 1), ThemeTag = { BackgroundColor3 = "DialogHolderLine" } }),
+				s.ButtonHolder,
+			})
 			s.Title = p("TextLabel", {
 				FontFace = Font.new(
 					"rbxasset://fonts/families/GothamSSm.json",
@@ -997,47 +992,43 @@ local aa = {
 			if r == "" or nil then
 				r = nil
 			end
-			x.Frame = k(
-				"TextButton",
-				{
-					Size = UDim2.new(1, 0, 0, 34),
-					BackgroundTransparency = 1,
-					Parent = s,
-					ThemeTag = {
-						BackgroundColor3 = "Tab",
-					},
+			x.Frame = k("TextButton", {
+				Size = UDim2.new(1, 0, 0, 34),
+				BackgroundTransparency = 1,
+				Parent = s,
+				ThemeTag = {
+					BackgroundColor3 = "Tab",
 				},
-				{
-					k("UICorner", { CornerRadius = UDim.new(0, 6) }),
-					k("TextLabel", {
-						AnchorPoint = Vector2.new(0, 0.5),
-						Position = r and UDim2.new(0, 30, 0.5, 0) or UDim2.new(0, 12, 0.5, 0),
-						Text = q,
-						RichText = true,
-						TextColor3 = Color3.fromRGB(255, 255, 255),
-						TextTransparency = 0,
-						FontFace = Font.new(
-							"rbxasset://fonts/families/GothamSSm.json",
-							Enum.FontWeight.Regular,
-							Enum.FontStyle.Normal
-						),
-						TextSize = 12,
-						TextXAlignment = "Left",
-						TextYAlignment = "Center",
-						Size = UDim2.new(1, -12, 1, 0),
-						BackgroundTransparency = 1,
-						ThemeTag = { TextColor3 = "Text" },
-					}),
-					k("ImageLabel", {
-						AnchorPoint = Vector2.new(0, 0.5),
-						Size = UDim2.fromOffset(16, 16),
-						Position = UDim2.new(0, 8, 0.5, 0),
-						BackgroundTransparency = 1,
-						Image = r and r or nil,
-						ThemeTag = { ImageColor3 = "Text" },
-					}),
-				}
-			)
+			}, {
+				k("UICorner", { CornerRadius = UDim.new(0, 6) }),
+				k("TextLabel", {
+					AnchorPoint = Vector2.new(0, 0.5),
+					Position = r and UDim2.new(0, 30, 0.5, 0) or UDim2.new(0, 12, 0.5, 0),
+					Text = q,
+					RichText = true,
+					TextColor3 = Color3.fromRGB(255, 255, 255),
+					TextTransparency = 0,
+					FontFace = Font.new(
+						"rbxasset://fonts/families/GothamSSm.json",
+						Enum.FontWeight.Regular,
+						Enum.FontStyle.Normal
+					),
+					TextSize = 12,
+					TextXAlignment = "Left",
+					TextYAlignment = "Center",
+					Size = UDim2.new(1, -12, 1, 0),
+					BackgroundTransparency = 1,
+					ThemeTag = { TextColor3 = "Text" },
+				}),
+				k("ImageLabel", {
+					AnchorPoint = Vector2.new(0, 0.5),
+					Size = UDim2.fromOffset(16, 16),
+					Position = UDim2.new(0, 8, 0.5, 0),
+					BackgroundTransparency = 1,
+					Image = r and r or nil,
+					ThemeTag = { ImageColor3 = "Text" },
+				}),
+			})
 			local y = k("UIListLayout", { Padding = UDim.new(0, 5), SortOrder = Enum.SortOrder.LayoutOrder })
 			x.ContainerFrame = k("ScrollingFrame", {
 				Size = UDim2.fromScale(1, 1),
@@ -1141,16 +1132,12 @@ local aa = {
 				Position = UDim2.fromOffset(10, 0),
 				ThemeTag = { TextColor3 = "Text", PlaceholderColor3 = "SubText" },
 			})
-			o.Container = l(
-				"Frame",
-				{
-					BackgroundTransparency = 1,
-					ClipsDescendants = true,
-					Position = UDim2.new(0, 6, 0, 0),
-					Size = UDim2.new(1, -12, 1, 0),
-				},
-				{ o.Input }
-			)
+			o.Container = l("Frame", {
+				BackgroundTransparency = 1,
+				ClipsDescendants = true,
+				Position = UDim2.new(0, 6, 0, 0),
+				Size = UDim2.new(1, -12, 1, 0),
+			}, { o.Input })
 			o.Indicator = l("Frame", {
 				Size = UDim2.new(1, -4, 0, 1),
 				Position = UDim2.new(0, 2, 1, 0),
@@ -1678,8 +1665,14 @@ local aa = {
 					m[o] = k.GetThemeProperty(p)
 				end
 			end
+			
 			for o, p in next, k.TransparencyMotors do
 				p:setGoal(j.Instant.new(k.GetThemeProperty("ElementTransparency")))
+			end
+			local x = getgenv().Fluent
+			if x and x.Window and x.Window.AcrylicPaint then
+				local thm = d[k.Theme]
+				if Animation and Animation.Apply then Animation.Apply(thm, x.Window.AcrylicPaint.Frame) end
 			end
 		end
 		function k.AddThemeObject(m, n)
@@ -2194,16 +2187,12 @@ local aa = {
 					}),
 				}
 			)
-			local v = e(
-				"Frame",
-				{
-					BackgroundTransparency = 1,
-					Size = UDim2.fromOffset(170, 300),
-					Parent = h.Library.GUI,
-					Visible = false,
-				},
-				{ u, e("UISizeConstraint", { MinSize = Vector2.new(170, 0) }) }
-			)
+			local v = e("Frame", {
+				BackgroundTransparency = 1,
+				Size = UDim2.fromOffset(170, 300),
+				Parent = h.Library.GUI,
+				Visible = false,
+			}, { u, e("UISizeConstraint", { MinSize = Vector2.new(170, 0) }) })
 			table.insert(k.OpenFrames, v)
 			local w, x =
 				function()
@@ -2742,9 +2731,7 @@ local aa = {
 					Rounding = f.Rounding,
 					Callback = f.Callback or function(h) end,
 					Type = "Slider",
-				},
-				false,
-				ac(aj.Element)(f.Title, f.Description, d.Container, false)
+				}, false, ac(aj.Element)(f.Title, f.Description, d.Container, false)
 			j.DescLabel.Size = UDim2.new(1, -170, 0, 14)
 			h.SetTitle = j.SetTitle
 			h.SetDesc = j.SetDesc
@@ -4539,6 +4526,110 @@ local aa = {
 			SubText = Color3.fromRGB(170, 170, 170),
 			Hover = Color3.fromRGB(200, 120, 170),
 			HoverChange = 0.04,
+		}
+	end,
+	[100] = function()
+		local aa, ab, ac, ad, ae = b(100)
+		return {
+			Name = "Crimson",
+			Accent = Color3.fromRGB(180, 10, 20),
+			AcrylicMain = Color3.fromRGB(35, 8, 10),
+			AcrylicBorder = Color3.fromRGB(140, 15, 25),
+			AcrylicGradient = ColorSequence.new(Color3.fromRGB(130, 12, 20), Color3.fromRGB(28, 5, 8)),
+			AcrylicNoise = 0.9,
+			TitleBarLine = Color3.fromRGB(155, 18, 28),
+			Tab = Color3.fromRGB(145, 15, 25),
+			Element = Color3.fromRGB(130, 12, 22),
+			ElementBorder = Color3.fromRGB(85, 8, 14),
+			InElementBorder = Color3.fromRGB(150, 18, 28),
+			ElementTransparency = 0.9,
+			ToggleSlider = Color3.fromRGB(180, 10, 20),
+			ToggleToggled = Color3.fromRGB(255, 230, 230),
+			SliderRail = Color3.fromRGB(145, 15, 25),
+			DropdownFrame = Color3.fromRGB(115, 10, 18),
+			DropdownHolder = Color3.fromRGB(28, 5, 8),
+			DropdownBorder = Color3.fromRGB(80, 7, 13),
+			DropdownOption = Color3.fromRGB(180, 10, 20),
+			Keybind = Color3.fromRGB(130, 12, 22),
+			Input = Color3.fromRGB(115, 10, 18),
+			InputFocused = Color3.fromRGB(18, 3, 5),
+			InputIndicator = Color3.fromRGB(220, 50, 70),
+			Dialog = Color3.fromRGB(28, 5, 8),
+			DialogHolder = Color3.fromRGB(18, 3, 5),
+			DialogHolderLine = Color3.fromRGB(12, 2, 3),
+			DialogButton = Color3.fromRGB(28, 5, 8),
+			DialogButtonBorder = Color3.fromRGB(145, 15, 25),
+			DialogBorder = Color3.fromRGB(85, 8, 14),
+			DialogInput = Color3.fromRGB(50, 10, 14),
+			DialogInputLine = Color3.fromRGB(220, 50, 70),
+			Text = Color3.fromRGB(255, 230, 230),
+			SubText = Color3.fromRGB(210, 175, 178),
+			Hover = Color3.fromRGB(180, 10, 20),
+			HoverChange = 0.05,
+			ShineEnabled = getgenv().ShineEnabled,
+			Shine = {
+				Speed = 0.5,
+				RotationSpeed = 25,
+				ColorSequence = ColorSequence.new({
+					ColorSequenceKeypoint.new(0, Color3.fromRGB(71, 0, 0)),
+					ColorSequenceKeypoint.new(0.5, Color3.fromRGB(159, 0, 0)),
+					ColorSequenceKeypoint.new(1, Color3.fromRGB(71, 0, 0)),
+				}),
+			},
+			StrokeShine = getgenv().ShineEnabled,
+			StrokeDark = Color3.fromRGB(145, 15, 25),
+		}
+	end,
+	[101] = function()
+		local aa, ab, ac, ad, ae = b(101)
+		return {
+			Name = "Azure",
+			Accent = Color3.fromRGB(0, 150, 200),
+			AcrylicMain = Color3.fromRGB(15, 30, 45),
+			AcrylicBorder = Color3.fromRGB(0, 100, 150),
+			AcrylicGradient = ColorSequence.new(Color3.fromRGB(0, 80, 120), Color3.fromRGB(10, 25, 40)),
+			AcrylicNoise = 0.9,
+			TitleBarLine = Color3.fromRGB(0, 120, 180),
+			Tab = Color3.fromRGB(0, 100, 150),
+			Element = Color3.fromRGB(0, 90, 135),
+			ElementBorder = Color3.fromRGB(0, 70, 105),
+			InElementBorder = Color3.fromRGB(0, 110, 165),
+			ElementTransparency = 0.87,
+			ToggleSlider = Color3.fromRGB(0, 150, 200),
+			ToggleToggled = Color3.fromRGB(255, 255, 255),
+			SliderRail = Color3.fromRGB(0, 100, 150),
+			DropdownFrame = Color3.fromRGB(0, 80, 120),
+			DropdownHolder = Color3.fromRGB(10, 25, 40),
+			DropdownBorder = Color3.fromRGB(0, 70, 105),
+			DropdownOption = Color3.fromRGB(0, 150, 200),
+			Keybind = Color3.fromRGB(0, 90, 135),
+			Input = Color3.fromRGB(0, 80, 120),
+			InputFocused = Color3.fromRGB(5, 20, 35),
+			InputIndicator = Color3.fromRGB(0, 200, 255),
+			Dialog = Color3.fromRGB(10, 25, 40),
+			DialogHolder = Color3.fromRGB(5, 15, 25),
+			DialogHolderLine = Color3.fromRGB(0, 10, 20),
+			DialogButton = Color3.fromRGB(10, 25, 40),
+			DialogButtonBorder = Color3.fromRGB(0, 100, 150),
+			DialogBorder = Color3.fromRGB(0, 70, 105),
+			DialogInput = Color3.fromRGB(15, 35, 55),
+			DialogInputLine = Color3.fromRGB(0, 200, 255),
+			Text = Color3.fromRGB(240, 248, 255),
+			SubText = Color3.fromRGB(180, 210, 230),
+			Hover = Color3.fromRGB(0, 150, 200),
+			HoverChange = 0.05,
+			ShineEnabled = getgenv().ShineEnabled,
+			Shine = {
+				Speed = 0.5,
+				RotationSpeed = 25,
+				ColorSequence = ColorSequence.new({
+					ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 60, 90)),
+					ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 200, 255)),
+					ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 60, 90)),
+				}),
+			},
+			StrokeShine = getgenv().ShineEnabled,
+			StrokeDark = Color3.fromRGB(0, 100, 150),
 		}
 	end,
 	[100] = function()
