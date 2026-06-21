@@ -1671,7 +1671,7 @@ local aa = {
 			end
 			local x = getgenv().Fluent
 			if x and x.Window and x.Window.AcrylicPaint then
-				local thm = d[k.Theme]
+				local thm = i[k.Theme]
 				if Animation and Animation.Apply then Animation.Apply(thm, x.Window.AcrylicPaint.Frame) end
 			end
 		end
