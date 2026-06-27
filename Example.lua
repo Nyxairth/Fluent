@@ -1,6 +1,6 @@
-local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nyxairth/Fluent/refs/heads/main/main.lua"))()
-local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nyxairth/Fluent/refs/heads/main/Addons/SaveManager.lua"))()
-local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nyxairth/Fluent/refs/heads/main/Addons/InterfaceManager.lua"))()
+local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/vadalol/Fluent/refs/heads/main/main.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/vadalol/Fluent/refs/heads/main/Addons/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/vadalol/Fluent/refs/heads/main/Addons/InterfaceManager.lua"))()
 
 local Window = Fluent:CreateWindow({
     Title = "Fluent " .. Fluent.Version,
